@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="style.css">
+  
+  <title>Age Calculator</title>
+</head>
+<body>
+  <div class="container">
+    <form action="submit">
+      <div id="input-field">
+        <div class="input-container">
+          <span class="label">DAY</span>
+          <input type="text" id="day-input" placeholder="DD">
+          <span class="error-message">Error</span>
+        </div>
+        <div class="input-container">
+          <span class="label">MONTH</span>
+          <input type="text" id="month-input" placeholder="MM">
+          <span class="error-message">Error</span>
+        </div>
+        <div class="input-container error">
+          <span class="label">YEAR</span>
+          <input type="text" id="year-input" placeholder="YYYY">
+          <span class="error-message">Error</span>
+        </div>
+      </div>
+      <div id="btn-field">
+        <hr>
+        <button type="submit" id="submit-btn">
+          <img src="./assets/images/icon-arrow.svg" alt="submit">
+        </button>
+      </div>
+    </form>
+    <div class="result">
+      <h1 id="years"><span class="value">--</span> years</h1>
+      <h1 id="months"><span class="value">--</span> months</h1>
+      <h1 id="days"><span class="value">--</span> days</h1>
+    </div>
+  </div>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="https://github.com/dbidmead">Drew Bidmead</a>.
+  </div>
+</body>
+<footer>
+  <script src="./app.js"></script>
+</footer>
+</html>
