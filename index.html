@@ -11,22 +11,22 @@
 </head>
 <body>
   <div class="container">
-    <form action="submit">
+    <form action="/">
       <div id="input-field">
         <div class="input-container">
           <span class="label">DAY</span>
           <input type="text" id="day-input" placeholder="DD">
-          <span class="error-message">Error</span>
+          <span class="error-message" id="day-error">Error</span>
         </div>
         <div class="input-container">
           <span class="label">MONTH</span>
           <input type="text" id="month-input" placeholder="MM">
-          <span class="error-message">Error</span>
+          <span class="error-message" id="month-error">Error</span>
         </div>
         <div class="input-container error">
           <span class="label">YEAR</span>
           <input type="text" id="year-input" placeholder="YYYY">
-          <span class="error-message">Error</span>
+          <span class="error-message" id="year-error">Error</span>
         </div>
       </div>
       <div id="btn-field">
@@ -45,7 +45,8 @@
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="https://github.com/dbidmead">Drew Bidmead</a>.
+    Coded by <a href="https://github.com/dbidmead" target="_blank">Drew Bidmead</a>.
+    <!-- the target="_blank" forces the <a> tag to open in new tab -->
   </div>
 </body>
 <footer>

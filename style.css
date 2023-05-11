@@ -79,7 +79,7 @@ form {
     color: var(--red);
 }
 
-
+/* the > connector allows you to style elements based on their parent's class */
 .error>input {
     border-color: var(--red);
 }
