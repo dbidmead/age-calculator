@@ -10,6 +10,10 @@ const dayMessage = 'Must be a valid day';
 const monthMessage = 'Must be a valid month';
 const yearMessage = 'Must be in the past';
 
+const dayValueDisplay = document.querySelector('#days').firstElementChild;
+const monthValueDisplay = document.querySelector('#months').firstElementChild;
+const yearValueDisplay = document.querySelector('#years').firstElementChild;
+
 const today = new Date();
 const TODAY = {
     day: today.getDate(),
@@ -177,7 +181,12 @@ function handleInput(e) {
             return;
         };  
     };
-    validateMonth();
+    if(!validateMonth()) {
+        if(MONTH.num > TODAY.month) {
+            DAY.parentElement.classList.add('error');
+            return;
+        }
+    };
     validateDay();
     // console.log(validateDay(), validateMonth(), validateYear(), e.target.parentElement)
 };
@@ -190,28 +199,47 @@ YEAR.addEventListener('input', handleInput)
 
 // --------------------------SUBMISSION LOGIC-----------------------------------
 
+// style all elements red if submission is invalid
+function handleInvalidSubmit() {
+    if (!DAY.parentElement.classList.contains('error')) {
+        DAY.parentElement.classList.add('error');
+    };
+    if (!MONTH.parentElement.classList.contains('error')) {
+        MONTH.parentElement.classList.add('error');
+    };
+    if (!YEAR.parentElement.classList.contains('error')) {
+        YEAR.parentElement.classList.add('error');
+    };
+}
 
+// calculate values for age in D/M/Y format
+function handleValidSubmit() {
+    let yearDiff = TODAY.year - YEAR.num;
+    let monthDiff = TODAY.month - MONTH.num;
+    let dayDiff = TODAY.day - DAY.num;
 
+    if(monthDiff < 0) {
+        yearDiff--;
+        monthDiff = 12 + monthDiff;
+    } 
+    if(dayDiff < 0) {
+        monthDiff--;
+        let monthIndex = MONTH.num - 1;
+        dayDiff = dayMaximums[monthIndex] + dayDiff;     
+    }
 
-
-
-
-
-
-
-
+    dayValueDisplay.textContent = dayDiff;
+    monthValueDisplay.textContent = monthDiff;
+    yearValueDisplay.textContent = yearDiff;
+    // console.log(`d: ${dayDiff}, m: ${monthDiff}, y: ${yearDiff}`);
+}
 
 SUBMIT.addEventListener('click', (e) => {
+    e.preventDefault(); // we never want the page to refresh, we only want HTML text to change
     if(!isFormValid(DAY, MONTH, YEAR)) {
-        e.preventDefault();
-        if (!DAY.parentElement.classList.contains('error')) {
-            DAY.parentElement.classList.add('error');
-        };
-        if (!MONTH.parentElement.classList.contains('error')) {
-            MONTH.parentElement.classList.add('error');
-        };
-        if (!YEAR.parentElement.classList.contains('error')) {
-            YEAR.parentElement.classList.add('error');
-        };
-    } else return;
+        handleInvalidSubmit();
+    } else {
+        handleValidSubmit();
+        return;
+    }
 })
